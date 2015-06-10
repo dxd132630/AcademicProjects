@@ -1,0 +1,17 @@
+use dxd132630;
+
+DROP TABLE IF EXISTS dxd132630.moviemonth;
+
+CREATE TABLE dxd132630.moviemonth 
+(movieid bigint, 
+title string, 
+genre string
+) partitioned by (month_partition string) 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;'
+STORED AS TEXTFILE LOCATION '/dxd132630/moviemonth';
+
+LOAD DATA INPATH '/dxd132630/January.dat' OVERWRITE INTO TABLE moviemonth Partition (month_partition = 'January');
+LOAD DATA INPATH '/dxd132630/February.dat' OVERWRITE INTO TABLE moviemonth Partition (month_partition = 'February');
+LOAD DATA INPATH '/dxd132630/March.dat' OVERWRITE INTO TABLE moviemonth Partition (month_partition = 'March');
+
+SELECT * FROM moviemonth WHERE month_partition='March';

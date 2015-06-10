@@ -1,0 +1,28 @@
+create schema dxd132630;
+use dxd132630;
+
+DROP TABLE IF EXISTS rating;
+DROP TABLE IF EXISTS movie;
+
+CREATE EXTERNAL TABLE dxd132630.rating
+( uid   bigint,
+  mid   bigint,
+  rat   bigint,
+  timestame string
+)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\:' STORED AS TEXTFILE LOCATION '/dxd132630/hrating';
+LOAD DATA INPATH '/dxd132630/ratings.dat' OVERWRITE INTO TABLE dxd132630.rating;
+
+
+CREATE EXTERNAL TABLE dxd132630.movie
+( mvid   bigint,
+  title   string,
+  genre   string
+)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\:' STORED AS TEXTFILE LOCATION '/dxd132630/hmovie'; 
+LOAD DATA INPATH '/dxd132630/movies.dat' OVERWRITE INTO TABLE dxd132630.movie;
+
+
+SELECT movie.mvid, AVG(rating.rat) avg_rating, movie.title 
+FROM movie JOIN rating ON (movie.mvid = rating.mid AND movie.genre LIKE '%Comedy%' )  
+GROUP BY movie.mvid, movie.title 
+ORDER BY avg_rating DESC
+LIMIT 11;

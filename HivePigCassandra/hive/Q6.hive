@@ -1,0 +1,32 @@
+use dxd132630;
+DROP TABLE IF EXISTS rating;
+DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS user;
+CREATE EXTERNAL TABLE dxd132630.rating
+( uid   bigint,
+  mid   bigint,
+  rat   bigint,
+  timestame string
+)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\:' STORED AS TEXTFILE LOCATION '/dxd132630/hrating';
+LOAD DATA INPATH '/dxd132630/ratings.dat' OVERWRITE INTO TABLE dxd132630.rating;
+CREATE EXTERNAL TABLE dxd132630.movie
+( mvid   bigint,
+  title   string,
+  genre   string
+)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\:' STORED AS TEXTFILE LOCATION '/dxd132630/hmovie'; 
+LOAD DATA INPATH '/dxd132630/movies.dat' OVERWRITE INTO TABLE dxd132630.movie;
+CREATE EXTERNAL TABLE dxd132630.user
+( uuid   bigint,
+  gender   string,
+  age   bigint,
+  occ   string,
+  zip string
+)ROW FORMAT DELIMITED FIELDS TERMINATED BY '\:' STORED AS TEXTFILE LOCATION '/dxd132630/huser'; 
+LOAD DATA INPATH '/dxd132630/users.dat' OVERWRITE INTO TABLE dxd132630.user;
+SELECT title, genre 
+FROM movie JOIN rating 
+on mvid = mid JOIN user
+on uid = uuid and gender like '%M%' 
+WHERE (genre like '%Comedy%' or genre like '%Drama%') 
+GROUP BY title, genre 
+HAVING avg(rat) >= 4.5 and avg(rat) <=4.6;

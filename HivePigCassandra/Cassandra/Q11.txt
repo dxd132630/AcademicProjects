@@ -1,0 +1,34 @@
+/usr/local/apache-cassandra-2.0.5/bin/cqlsh csac0
+
+DROP KEYSPACE dxd132630d ;
+CREATE KEYSPACE dxd132630d WITH replication = {'class':'SimpleStrategy', 'replication_factor': 1};
+use dxd132630d;
+
+
+1- Create a table for this dataset. Use (UserID) as the Primary Key.
+
+CREATE TABLE userscql (
+  UserID int PRIMARY KEY,
+  gender varchar,
+  age int,
+  occupation varchar,
+  zip varchar
+);
+
+2- Load all records in the dataset to this table.
+COPY userscql(userid,gender,age,occupation,zip) FROM '/home/004/d/dx/dxd132630/users1.dat' WITH DELIMITER = ':';
+
+3- Insert record “6041:M:32:6:11120" to the table.
+INSERT INTO userscql (UserID, gender, age, occupation, zip) VALUES (6041, 'M',32, '6', '11120');
+select * from userscql where userid = 6041;
+
+4- Select the tuple which has user id 6020
+select * from userscql where UserID=6020;
+
+5- Delete all rows in the table.
+truncate userscql;
+select * from userscql;
+describe table userscql;
+
+6- Drop the table.
+drop table userscql;

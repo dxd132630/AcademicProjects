@@ -1,0 +1,62 @@
+/usr/local/apache-cassandra-2.0.5/bin/cassandra-cli --host csac0
+
+DROP KEYSPACE dxd132630;
+CREATE KEYSPACE dxd132630 with placement_strategy = 'SimpleStrategy' and strategy_options = {replication_factor:1};
+use dxd132630;
+
+1. Create a COLUMN FAMILY for this dataset.
+
+CREATE COLUMN FAMILY users
+WITH comparator = UTF8Type
+AND key_validation_class=UTF8Type
+AND column_metadata = [
+{column_name: user_id, validation_class: IntegerType,index_type: KEYS}
+{column_name: gender, validation_class: UTF8Type}
+{column_name: age, validation_class: IntegerType}
+{column_name: occupation, validation_class: UTF8Type}
+{column_name: zip, validation_class: UTF8Type}
+];
+
+
+2. Insert the following to the column family created in step 1. Use UserID as the key.
+i. "13:F:51:1:93334"
+
+SET users['13']['user_id']='13' ;
+SET users['13']['gender']='F';
+SET users['13']['age']='51' ;
+SET users['13']['occupation']='1';
+SET users['13']['zip']='93334';
+
+ii. "1471:F:31:17:11116"
+
+SET users['1471']['user_id']='1471';
+SET users['1471']['gender']='F';
+SET users['1471']['age']='31' ;
+SET users['1471']['occupation']='17';
+SET users['1471']['zip']='11116';
+
+iii. "1496:F:31:17:94118" with time to live (ttl) clause after 300 seconds
+
+SET users['1496']['user_id']='1496' with ttl = 300;
+SET users['1496']['gender']='F' with ttl = 300;
+SET users['1496']['age']='31' with ttl = 300;
+SET users['1496']['occupation']='17' with ttl = 300;
+SET users['1496']['zip']='94118' with ttl = 300;
+
+3. Show the following:
+i. Get the Gender and Occupation for user with id 13 ?
+get users['13']['gender'];
+get users['13']['occupation'];
+
+ii. Retrieve all rows and columns.
+LIST users;
+
+iii. Delete column Gender for the user id 1471.
+DEL users ['1471']['gender'];
+
+iv. Drop the column family.
+DROP COLUMN FAMILY users;
+
+4. Use describe keyspace command with your netid and show content.
+describe dxd132630;
+

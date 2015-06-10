@@ -1,0 +1,14 @@
+rating = load '/dxd132630/ratings.dat' using PigStorage(':') as (uid:int,mid:int,rat:float,time:chararray);
+movie = load '/dxd132630/movies.dat' using PigStorage(':') as (movieid:int,title:chararray,genre:chararray);
+mvgrp = group rating by mid;
+avg = foreach mvgrp generate group as mv,SUM(rating.rat)/COUNT(rating.rat) as avge;
+cndmv = filter movie by genre matches '.*Drama.*' and genre matches '.*Comedy.*';
+m = foreach cndmv generate movieid;
+joinmr = join avg by mv, m by movieid;
+low = order joinmr by avge;
+lowm = limit low 1;
+user = load '/dxd132630/users.dat' using PigStorage(':') as (userid:int,gender:chararray,age:int,occupation:int,zip:chararray);
+gen = filter user by age>20 and age<40 and gender matches 'F' and zip matches '1.*';
+tmp = join lowm by mv,rating by mid;
+finalans = join tmp by uid,gen by userid;
+dump finalans;

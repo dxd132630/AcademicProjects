@@ -1,0 +1,38 @@
+#################################################################################################################################################
+#								HW3 README								       #
+#						AUTHOR: DEEPTI DESHPANDE NET_ID:DXD132630						       #
+#					OBJECTIVE: IMPLEMENTAITON OF QUARIES IN PIG,HIVE and CASSANDRA				       #
+#################################################################################################################################################
+
+Big Data HW3 README:
+
+1. Submitted by: dxd132630 Name: deepti deshpande
+2. The submission file contains :
+   1.Pig folder :Q1.pig, Q2.pig,Q3.pig and Q4.pig, dxd132630HW3.jar, FORMAT_GENRE.java and Q1-Q4.res files
+   2. HIVE folder :Q5-Q9.hive files,FORMAT_GENRE.jar,FORMAT_GENRE.java and Q5-Q9.res files
+   3. CASSANDRA folder:Q1.txt,Q2.txt and Q3.txt
+   4. README
+
+EXECUTION STEPS:
+Q1:  pig Q1.pig >Q1.res
+Q2:  pig Q2.pig >Q2.res
+Q3:  pig Q3.pig >Q3.res
+Q4:  pig Q4.pig >Q4.res
+
+HIVE EXECUTION:
+./insert.sh
+Q5: hive -f Q5.hive > Q5.res
+Q6: hive -f Q6.hive > Q6.res
+Q7: hive -f Q7.hive > Q7.res
+Q8: hive -f Q8.hive > Q8.res
+Q9: hive -f Q9.hive > Q9.res
+
+CASSANDRA:
+Q10: COPY THE COMMANDS FROM Q1.txt
+Q11: COPY THE COMMANDS FROM Q2.txt
+Q12: COPY THE COMMANDS FROM Q3.txt
+
+
+
+
+

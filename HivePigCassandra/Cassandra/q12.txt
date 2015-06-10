@@ -1,0 +1,5 @@
+Run nodetool command and determine how much unbalanced the cluster is.
+/usr/local/apache-cassandra-2.0.5/bin/nodetool -h csac0 ring
+/usr/local/apache-cassandra-2.0.5/bin/nodetool -h csac1 ring
+/usr/local/apache-cassandra-2.0.5/bin/nodetool -h csac2 ring
+/usr/local/apache-cassandra-2.0.5/bin/nodetool -h csac3 ring
