@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class DSDuplicateString {
 	public static void main(String[] args){
-		String input = "1232123";
+		String input = "321223";
 		dsduplicatestringbruteforce1(input);
 		dsduplicatestringbruteforce2(input);
 		dsduplicatestringhashing(input);
