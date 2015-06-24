@@ -92,7 +92,8 @@ public class mapSideJoin {
 		Job job = new Job(conf, "joinexc"); 
 		job.setJarByClass(mapSideJoin.class);
 		
-		final String NAME_NODE = "hdfs://sandbox.hortonworks.com:8020";job.addCacheFile(new URI(NAME_NODE+ "/user/hue/user/users.dat"));;
+		final String NAME_NODE = "hdfs://sandbox.hortonworks.com:8020";
+		job.addCacheFile(new URI(NAME_NODE+ "/user/hue/user/users.dat"));;
 		MultipleInputs.addInputPath(job, new Path(args[0]),TextInputFormat.class ,ReplicatedJoinMapper.class );
 		job.setOutputKeyClass(Text.class);
 		// set output value type
