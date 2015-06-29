@@ -1,7 +1,4 @@
-####################################################################################################
-#					CS 6375 Machine Learning 				   #
-#                                             Homework 3                                           #
-#				Name=Deepti Deshpande UTD ID:2021204846	                           #
+####################################################################################################                            Name=Deepti Deshpande UTD ID:2021204846	                           
 ####################################################################################################
 1.Code is developed in Java using eclipse application on Windows 8 platform
 2.The program can be run using comand line by passing programs javac file name and 4 arguments: train file name,test file name,learning rate and number of iterations
