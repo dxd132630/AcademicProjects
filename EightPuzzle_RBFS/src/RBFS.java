@@ -1,6 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//							AI Programming assignment HW 1 : Implementation of RBFS						      //
-//The following code is the implementation of Recursive Best first search using AIMA built in functions       //
 //The program takes a command line input which is a file name and assigns to the variable "startStateFileName"//
 //The function "getStartState(<file_name>) reads the file and parses the contents based on the requirement    //
 //into an array "startStatefromFile" [In the input from a text file with numbers in rows separated by a <tab> //
