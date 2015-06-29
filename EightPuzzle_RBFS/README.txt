@@ -1,6 +1,4 @@
 ####################################################################################################
-#					CS 6364 Artificial Intelligence				   #
-#                                             Homework 1                                           #
 #				Name:Deepti Deshpande UTD ID:dxd132630	                           #
 ####################################################################################################
 1.Code is developed in Java using eclipse application on Windows 8 platform
