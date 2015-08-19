@@ -18,9 +18,9 @@ public class EvalPolishNotation{
 				int b = Integer.valueOf(st.pop());
 				switch(t){
 					case "+"  : st.push(String.valueOf(a+b)); break;				
-					case "-"  : st.push(String.valueOf(a-b)); break;			
+					case "-"  : st.push(String.valueOf(b-a)); break;			
 					case "*"  : st.push(String.valueOf(a*b)); break;	
-					case "/"  : st.push(String.valueOf(a/b)); break;					
+					case "/"  : st.push(String.valueOf(b/a)); break;					
 				}
 			}		
 		}
