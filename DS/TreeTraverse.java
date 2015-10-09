@@ -55,6 +55,20 @@ public class TreeTraverse
    System.out.print(n.data + " ");
   }
  }
+ public static Node invert(Node n){
+	if(n!=null){
+		Node temp = n.left;
+		n.left = n.right;
+		n.right = temp;
+		 
+		if(n.left != null)
+			invert(n.left);
+		if(n.right != null)
+			invert(n.right);
+		
+	}
+	return n;
+ }
  public static void levelorder(Node n)
  {
   Queue<Node> nodequeue = new LinkedList<Node>();
@@ -104,6 +118,9 @@ public class TreeTraverse
   System.out.println();
   System.out.print("Level-order \t:");
   levelorder(one);
+  invert(one);
+  System.out.print("\nPre-order after tree inversion \t:"); 
+  preorder(one);
   System.out.println();
  }
 }
