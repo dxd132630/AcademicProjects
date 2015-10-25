@@ -11,7 +11,7 @@ class Queue{
 		}
 	}
 	public Node dequeue(){
-		if(first == null)
+		if(head == null)
 			return null;
 		else{
 			Node temp = new Node(head.val);
