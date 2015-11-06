@@ -16,7 +16,7 @@ public class MaxRotationSum{
 		return max_sum;
 	}
 	public static void main(String[] args){
-		int[] input = {1, 20, 2, 10};
+		int[] input = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 		int result = findSum(input);
 		System.out.println("the result :"+result);
 	}
