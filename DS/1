@@ -29,20 +29,21 @@ public class TreeTraverse
   }
  }
 public static int findLevel(Node n,Node a,int d){ 
-	if(n== null) 
+	if(n!= null)
 		return -1;
 	else{
-		if(Integer.parseInt(n.data) == Integer.parseInt(a.data))
+		if(Integer.parseInt(n.data) < Integer.parseInt(a.data))
+			findLevel(n.left,a,d+1);
+		else if (Integer.parseInt(n.data) > Integer.parseInt(a.data))
+			findLevel(n.right,a,d+1);
+		else
 			return d;
-		else if(Integer.parseInt(n.data) < Integer.parseInt(a.data))
-			return findLevel(n.left,a,d+1);
-		return findLevel(n.right,a,d+1);
 	}
 }
 public static int findLCDistance(Node root, Node a,Node b){
 	Node lca = LCA(root,a,b);
-	int d1 = findLevel(lca,a,0);
-	int d2 = findLevel(lca,b,0);
+	int d1 = findLevel(lca,a);
+	int d2 = findLevel(lca,b);
 		if(d1 !=-1 && d2 !=-1)
 			return d1+d2;
 		else
@@ -134,32 +135,31 @@ public static Node LCA(Node root, Node a, Node b) {
   Node seven = new Node("7");
   Node eight = new Node("8");
   Node nine = new Node("9");
-  six.setLeft(four);
-  six.setRight(seven);
-  four.setLeft(three);
-  four.setRight(five);
-  three.setLeft(one);
-  three.setRight(two);
-  seven.setLeft(eight);
-  seven.setRight(nine);
+  one.setLeft(two);
+  one.setRight(three);
+  two.setLeft(four);
+  two.setRight(five);
+  three.setLeft(six);
+  four.setLeft(seven);
+  six.setLeft(eight);
+  six.setRight(nine);
   System.out.print("Pre-order \t:");
-  preorder(six);
+  preorder(one);
   System.out.println();
   System.out.print("In-order \t:");
-  inorder(six);
+  inorder(one);
   System.out.println();
   System.out.print("Post-order \t:");
-  postorder(six);
+  postorder(one);
   System.out.println();
   System.out.print("Level-order \t:");
-  levelorder(six);
-  invert(six);
+  levelorder(one);
+  invert(one);
   System.out.print("\nPre-order after tree inversion \t:"); 
-  preorder(six);
-  Node n = LCA(six,one,nine);
+  preorder(one);
+  Node n = LCA(one,seven,nine);
   System.out.print("\nLowest Common Ancestor \t: "+n.data+"\n");
-  int d = findLCDistance(six ,one,nine);
-  System.out.print("The least distance between 2 nodes is ="+d);
-  System.out.println();
+  int d = findLCDistance(one ,seven,nine);
+  System.out.print("The distance is ="+d);
  }
 }
