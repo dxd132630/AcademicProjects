@@ -1,3 +1,6 @@
+/*
+*Given the stock rates for every day. Find the maximum profit you can earn for one buy and one sell of stock
+*/
 public class StockProblem1{
 	public static void main(String[] args){
 		int[] stocks = {100,70,80,120,300,20};
