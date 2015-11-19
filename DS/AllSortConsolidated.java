@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class sort{
+public class AllSortConsolidated{
         public static int[] result;
         public static void main(String[] a){
                 int[] input = {1,5,2,5,3,0};
@@ -11,6 +11,8 @@ public class sort{
                 result = new int[input2.length];
                 merge(input2,0,input2.length-1);
                 System.out.println(Arrays.toString(result));
+		int[] bubble_input = {1,5,2,5,3,0};
+		bubbleSort(bubble_input);
         }
         public static void insertionSort(int[] input){
                 int key = 0;
@@ -69,4 +71,16 @@ public class sort{
                 for(int p=0;p<(high-low+1);p++)
                         input2[low+p] =  result[p];
         }
+	public static void bubbleSort(int[] input){
+		for(int i=0;i<input.length-1;i++){
+			for(int j=1;j<(input.length-i);j++){
+				if(input[j-1]>input[j]){
+					int temp = input[j-1];
+			                input[j-1] = input[j];
+                			input[j] = temp;
+				}
+			}
+		}
+		System.out.println(Arrays.toString(input));
+	}
 }
